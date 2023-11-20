@@ -4,7 +4,7 @@ import 'package:sqids/sqids.dart'; // Make sure to replace 'sqids' with the actu
 void main() {
   group('alphabet', () {
     test('simple', () {
-      final sqids = Sqids(options: SqidsOptions(alphabet: '0123456789abcdef'));
+      final sqids = Sqids(alphabet: '0123456789abcdef');
 
       final numbers = [1, 2, 3];
       const id = '489158';
@@ -14,7 +14,7 @@ void main() {
     });
 
     test('short alphabet', () {
-      final sqids = Sqids(options: SqidsOptions(alphabet: 'abc'));
+      final sqids = Sqids(alphabet: 'abc');
 
       final numbers = [1, 2, 3];
       expect(sqids.decode(sqids.encode(numbers)), equals(numbers));
@@ -22,9 +22,9 @@ void main() {
 
     test('long alphabet', () {
       final sqids = Sqids(
-        options: SqidsOptions(
+        
             alphabet:
-                'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#\$%^&*()-_+|{}[];:\'/?.>,<`~'),
+                'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#\$%^&*()-_+|{}[];:\'/?.>,<`~',
       );
 
       final numbers = [1, 2, 3];
@@ -32,20 +32,20 @@ void main() {
     });
 
     test('repeating alphabet characters', () {
-      expect(() => Sqids(options: SqidsOptions(alphabet: 'aabcdefg')),
+      expect(() => Sqids(alphabet: 'aabcdefg'),
           throwsA(isA<Exception>()));
     });
 
     test('too short of an alphabet', () {
       expect(
-        () => Sqids(options: SqidsOptions(alphabet: 'ab')),
+        () => Sqids(alphabet: 'ab'),
         throwsA(isA<Exception>()),
       );
     });
 
     test('too short of an alphabet', () {
       expect(
-        () => Sqids(options: SqidsOptions(alphabet: 'ab')),
+        () => Sqids(alphabet: 'ab'),
         throwsA(isA<Exception>()),
       );
     });
